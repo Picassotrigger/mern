@@ -9,7 +9,7 @@ var PORT = 4200;
 
 //mongoose
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongod://localhost/newMern')
+mongoose.connect('mongodb://localhost/newMern')
   .then(() => {
     console.log('Mongoose started');
   })
@@ -20,7 +20,7 @@ mongoose.connect('mongod://localhost/newMern')
 
 
 //require in toy router - this express version
-var toyRouter = require('.src/routes/toyRouter');
+var toyRouter = require('./src/routes/toyRouter');
 
 app.use(express.static('public'));
 
@@ -32,6 +32,6 @@ app.use(bodyParser.json());
 app.use('/toys', toyRouter);
 
 
-app.listen(port, function() {
+app.listen(PORT, function() {
   console.log('Server is running on port: ', PORT);
 });

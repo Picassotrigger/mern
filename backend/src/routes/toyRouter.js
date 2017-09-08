@@ -20,4 +20,15 @@ toyRouter.route('/add/post').post(function(req, res) {
 });
 
 
-module.export = toyRouter;
+toyRouter.route('/').get(function(req, res) {
+  Toy.find(function(err, theToys) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.json(theToys);
+    }
+  });
+});
+
+
+module.exports = toyRouter;
